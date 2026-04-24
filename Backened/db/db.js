@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
+  // Aapka asli Connection String
+  const dbURI = "mongodb+srv://muhammad64078_db_user:qyUukG3A6Ab9k2Uj@cluster0.yil7zff.mongodb.net/crm";
 
-
-  //pASSWORD   : qyUukG3A6Ab9k2Uj
   try {
-    if (!process.env.MONGODB_URL) {
-      console.warn("MONGODB_URL is not defined in environment variables!");
-    }
-    await mongoose.connect(process.env.MONGODB_URL);
+    // Humne direct dbURI variable pass kiya hai
+    await mongoose.connect(dbURI);
     console.log("MongoDB Connected ✅");
   } catch (error) {
-    console.error("MongoDB Connection Error:", error);
+    console.error("MongoDB Connection Error ❌:", error.message);
+    process.exit(1); // Error aane par process ko stop kar dega
   }
 };
 

@@ -14,7 +14,7 @@ export const Team = () => {
       try {
         const token = localStorage.getItem("token");
         console.log("TOKEN:", localStorage.getItem("token"));
-        const res = await axios.get("http://localhost:5000/api/admin/team-report", {
+        const res = await axios.get("https://mt-crm-nine.vercel.appapi/admin/team-report", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setData(res.data);

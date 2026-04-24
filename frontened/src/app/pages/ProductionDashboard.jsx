@@ -13,7 +13,7 @@ export const ProductionDashboard = () => {
     const fetchProjects = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/projects", {
+        const res = await axios.get("https://mt-crm-nine.vercel.app/api/projects", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProjects(res.data);

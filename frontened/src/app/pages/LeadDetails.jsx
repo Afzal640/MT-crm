@@ -71,7 +71,7 @@ const [files, setFiles] = useState([]);
   useEffect(() => {
   const fetchFiles = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/files/${id}`,
+      `https://mt-crm-nine.vercel.app/api/files/${id}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -93,7 +93,7 @@ const handleUpload = async () => {
   formData.append("file", file);
 
   const res = await axios.post(
-    `http://localhost:5000/api/files/upload/${id}`,
+    `https://mt-crm-nine.vercel.app/api/files/upload/${id}`,
     formData,
     {
       headers: {
@@ -109,7 +109,7 @@ const handleUpload = async () => {
 
 const handleDelete = async (fileId) => {
   await axios.delete(
-    `http://localhost:5000/api/files/${fileId}`,
+    `https://mt-crm-nine.vercel.app/api/files/${fileId}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -133,7 +133,7 @@ const handleDelete = async (fileId) => {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          `http://localhost:5000/api/leads/${id}`,
+          `https://mt-crm-nine.vercel.app/api/leads/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -160,7 +160,7 @@ const handleDelete = async (fileId) => {
       setStatusUpdating(true);
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:5000/api/leads/${id}`,
+        `https://mt-crm-nine.vercel.app/api/leads/${id}`,
         { status: selectedStatus },
         {
           headers: {
@@ -184,7 +184,7 @@ const handleDelete = async (fileId) => {
       setNoteUpdating(true);
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:5000/api/leads/${id}`,
+        `https://mt-crm-nine.vercel.app/api/leads/${id}`,
         { notes: noteText },
         {
           headers: {

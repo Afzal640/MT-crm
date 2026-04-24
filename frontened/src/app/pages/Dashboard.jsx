@@ -93,7 +93,7 @@ export const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/admin/create-user",
+        "https://mt-crm-nine.vercel.app/api/admin/create-user",
         { name, email, password, role },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -116,13 +116,13 @@ export const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/targets/assign",
+        "https://mt-crm-nine.vercel.app/api/targets/assign",
         targetForm,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert("Target assigned successfully! 🎯");
       setIsTargetModalOpen(false);
-      const res = await axios.get("http://localhost:5000/api/targets", {
+      const res = await axios.get("https://mt-crm-nine.vercel.app/api/targets", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAllTargets(res.data);
@@ -136,7 +136,7 @@ export const Dashboard = () => {
   const createProject = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/api/projects", projectForm, {
+      await axios.post("https://mt-crm-nine.vercel.app/api/projects", projectForm, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Project created ✅");
@@ -162,8 +162,8 @@ export const Dashboard = () => {
         if (!isAdmin && !isSales) return; // Production users will be redirected, don't fetch stats
 
         const endpoint = isAdmin
-          ? "http://localhost:5000/api/admin/dashboard-stats"
-          : "http://localhost:5000/api/sales/dashboard";
+          ? "https://mt-crm-nine.vercel.app/api/admin/dashboard-stats"
+          : "https://mt-crm-nine.vercel.app/api/sales/dashboard";
 
         const statsRes = await axios.get(endpoint, {
           headers: { Authorization: `Bearer ${token}` },
@@ -188,26 +188,26 @@ export const Dashboard = () => {
 
         if (isAdmin) {
           chartPromise = axios
-            .get("http://localhost:5000/api/admin/chart-data", {
+            .get("https://mt-crm-nine.vercel.app/api/admin/chart-data", {
               headers: { Authorization: `Bearer ${token}` },
             })
             .catch(() => ({ data: { leadsByService: [], monthlyDeals: [] } }));
 
           usersPromise = axios
-            .get("http://localhost:5000/api/admin/users", {
+            .get("https://mt-crm-nine.vercel.app/api/admin/users", {
               headers: { Authorization: `Bearer ${token}` },
             })
             .catch(() => ({ data: [] }));
 
           axios
-            .get("http://localhost:5000/api/auth/sales-users", {
+            .get("https://mt-crm-nine.vercel.app/api/auth/sales-users", {
               headers: { Authorization: `Bearer ${token}` },
             })
             .then((res) => setSalesUsers(res.data))
             .catch(() => {});
 
           axios
-            .get("http://localhost:5000/api/targets", {
+            .get("https://mt-crm-nine.vercel.app/api/targets", {
               headers: { Authorization: `Bearer ${token}` },
             })
             .then((res) => setAllTargets(res.data))
@@ -250,7 +250,7 @@ export const Dashboard = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          "http://localhost:5000/api/auth/production-users",
+          "https://mt-crm-nine.vercel.app/api/auth/production-users",
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setProductionUsers(res.data);

@@ -35,7 +35,7 @@ export const ProductionProjects = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("https://mt-crm-46da.vercel.app/api/projects", {
+    axios.get("http://localhost:5000/api/projects", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setProjectsData(res.data))

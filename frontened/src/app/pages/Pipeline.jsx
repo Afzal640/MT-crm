@@ -26,7 +26,7 @@ export const Pipeline = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("https://mt-crm-46da.vercel.app/api/leads", {
+        const res = await axios.get("http://localhost:5000/api/leads", {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -47,7 +47,7 @@ export const Pipeline = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `https://mt-crm-46da.vercel.app/api/leads/${id}`,
+        `http://localhost:5000/api/leads/${id}`,
         { status: newStatus },
         {
           headers: {

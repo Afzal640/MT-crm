@@ -17,7 +17,7 @@ export const SalesDashboard = () => {
 
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/sales/dashboard",
+          "https://mt-crm-46da.vercel.app/api/sales/dashboard",
           {
             headers: { Authorization: `Bearer ${token}` }
           }
@@ -197,4 +197,4 @@ export const SalesDashboard = () => {
 
     </div>
   );
-};
+};

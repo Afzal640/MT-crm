@@ -14,7 +14,7 @@ const uploadFile = async () => {
     const token = localStorage.getItem("token");
 
     await axios.post(
-      `http://localhost:5000/api/projects/${id}/files`,
+      `${import.meta.env.VITE_API_URL}/api/projects/${id}/files`,
       { fileUrl: "https://dummyfile.com/file.pdf" },
       {
         headers: {
@@ -84,7 +84,7 @@ export const ProjectDetails = () => {
   const fetchProject = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:5000/api/projects/${id}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProject(res.data);
@@ -100,7 +100,7 @@ export const ProjectDetails = () => {
     const fetchAllProjects = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/projects`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setAllProjects(res.data);
@@ -115,7 +115,7 @@ export const ProjectDetails = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/api/projects/${id}/status`,
+        `${import.meta.env.VITE_API_URL}/api/projects/${id}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -134,7 +134,7 @@ export const ProjectDetails = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        `http://localhost:5000/api/projects/${id}/files`,
+        `${import.meta.env.VITE_API_URL}/api/projects/${id}/files`,
         { url: fileUrl },
         { headers: { Authorization: `Bearer ${token}` } }
       );

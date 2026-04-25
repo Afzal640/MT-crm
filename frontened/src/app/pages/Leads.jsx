@@ -74,7 +74,7 @@ const [assignData, setAssignData] = useState({
     const fetchLeads = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/leads", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/leads`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setLeads(res.data);
@@ -91,7 +91,7 @@ const [assignData, setAssignData] = useState({
     const fetchProductionUsers = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/production-users", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/production-users`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProductionUsers(res.data);
@@ -144,14 +144,14 @@ const [assignData, setAssignData] = useState({
 
       if (editingLead) {
         res = await axios.put(
-          `http://localhost:5000/api/leads/${editingLead._id}`,
+          `${import.meta.env.VITE_API_URL}/api/leads/${editingLead._id}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setLeads(leads.map(l => l._id === editingLead._id ? res.data : l));
       } else {
         res = await axios.post(
-          "http://localhost:5000/api/leads",
+          `${import.meta.env.VITE_API_URL}/api/leads`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -174,7 +174,7 @@ const [assignData, setAssignData] = useState({
     if (!window.confirm("Are you sure you want to delete this lead?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/leads/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/leads/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setLeads(leads.filter(l => l._id !== id));
@@ -201,7 +201,7 @@ const convertLeadToProject = async () => {
     const token = localStorage.getItem("token");
 
     await axios.post(
-      "http://localhost:5000/api/projects/from-lead",
+      `${import.meta.env.VITE_API_URL}/api/projects/from-lead`,
       {
         leadId: selectedLead._id,
         assignedTo: assignData.assignedTo,

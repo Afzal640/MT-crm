@@ -17,7 +17,7 @@ export const SalesDashboard = () => {
 
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/sales/dashboard",
+          `${import.meta.env.VITE_API_URL}/api/sales/dashboard`,
           {
             headers: { Authorization: `Bearer ${token}` }
           }

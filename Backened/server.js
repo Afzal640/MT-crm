@@ -13,7 +13,6 @@
   import projectRoutes from "./routes/projectRoutes.js";
   import fileroutes from "./routes/fileroutes.js";
 
-
   connectDB();
 
   const app = express();
@@ -21,6 +20,10 @@
   // Middleware
   app.use(cors());
   app.use(express.json());
+
+
+
+
 
   // Routes
   app.use("/api/auth", authRoutes);
@@ -32,6 +35,8 @@
   app.use("/api/leads", leadRoutes);
   app.use("/api/projects", projectRoutes);
   app.use("/api/files", fileroutes);
+
+
 
   if (process.env.NODE_ENV !== "production") {
     app.listen(5000, () => {

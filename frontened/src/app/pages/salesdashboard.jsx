@@ -17,7 +17,7 @@ export const SalesDashboard = () => {
 
       try {
         const res = await axios.get(
-          "https://mt-crm-nine.vercel.app/api/sales/dashboard",
+          "http://localhost:5000/api/sales/dashboard",
           {
             headers: { Authorization: `Bearer ${token}` }
           }
